@@ -1,0 +1,1 @@
+{"version":"0.0.1","name":"fcc-advanced-node-and-express","dependencies":{"dotenv":{"version":"8.6.0"},"express":{"version":"4.17.3"},"mongodb":{"version":"3.7.3"},"pug":{"version":"3.0.2"}}}
