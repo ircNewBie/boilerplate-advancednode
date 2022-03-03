@@ -1,5 +1,7 @@
 'use strict';
 require('dotenv').config();
+const session = require('express-session');
+const passport = require('passport');
 const express = require('express');
 const myDB = require('./connection');
 const fccTesting = require('./freeCodeCamp/fcctesting.js');
@@ -12,8 +14,18 @@ app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.route('/').get((req, res) => {
-  res.render(`${process.cwd()}/views/pug`,{title: '\nHello', message: 'Please login'} );
+  res.render(`${process.cwd()}/views/pug`,{title: 'Hello', message: 'Please login'} );
 });
 
  
