@@ -9,6 +9,16 @@ const fccTesting = require('./freeCodeCamp/fcctesting.js');
 const app = express();
 app.set('view engine', 'pug');
 
+passport.serializeUser((user, done) => {
+  done(null, user._id);
+});
+
+passport.deserializeUser((id, done) => {
+  myDataBase.findOne({_id: new ObjectId(id)}, (err, doc) => {
+    done (null, null);
+  });
+});
+
 fccTesting(app); //For FCC testing purposes
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
