@@ -39,7 +39,7 @@ app.set('view engine', 'pug')
 app.route("/").get((req, res) => {
   //Change the response to render the Pug template
   console.log('What is this', process.cwd())
-  res.render(process.cwd() + '/views/pug/index', {title: 'Hello', message: 'Please login'});
+  res.render(process.cwd() + '/views/pug/index', {title: 'Whazzup', message: 'Please login'});
 });
 
 app.listen(process.env.PORT || 3000, () => {
